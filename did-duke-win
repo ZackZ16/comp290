@@ -1,0 +1,32 @@
+#!/bin/bash
+# author: Zack Zeplin 
+# PID: 730244229 
+# I pledge the UNC and COMP290 Honor Code.
+echo "TODO"
+
+if [ "${1}" = "--help" ] 
+then
+    # Lists the usage of the command
+    echo "Usage: did-duke-win [test-url]" 
+    exit 1
+elif [ -z "${1}" ]
+then
+    if [  `curl -s https://diddukewin.com/ | grep -o "YES"` = "YES" ]
+    then
+        echo "Yes."
+        exit 0
+    elif [ `curl -s https://diddukewin.com/ | grep -o "NO"` = "NO" ]
+    then
+        echo "No!"
+        exit 0
+    fi
+elif [ `curl -s  ${1} | grep -o "YES"` = "YES" ]
+then
+   echo "Yes."
+   exit 0
+elif [ `curl -s  ${1} | grep -o "NO"` = "NO" ]
+then
+   echo "No!"
+   exit 0
+fi
+
